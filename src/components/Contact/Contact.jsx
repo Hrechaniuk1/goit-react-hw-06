@@ -1,11 +1,16 @@
 import { IoMdContact } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux"
+
 import css from './Contact.module.css'
 
-export default function Contact({ userName, userNumber, id, deleteC }) {
-    
+import { deleteContact } from "../../redux/contactsSlice";
+
+export default function Contact({ userName, userNumber, id }) {
+    const dispatch = useDispatch()
     function deleteHandler() {
-        deleteC(id)
+        dispatch(deleteContact(id))
+        
     }
 
     return (

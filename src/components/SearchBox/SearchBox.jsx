@@ -2,7 +2,7 @@ import { Formik, Form, Field } from 'formik'
 import { useId } from "react";
 import css from './SearchBox.module.css'
 
-export default function SearchBox({doSearch, inputValue}) {
+export default function SearchBox() {
     const SearchId = useId()
     
     return (
@@ -12,7 +12,7 @@ export default function SearchBox({doSearch, inputValue}) {
             >
                 <Form className={css.search}>
                     <label htmlFor={SearchId}>Find contacts by name</label>
-                    <Field className={css.input} onChange={(event) => doSearch(event.target.value)} type='text' name='name' id={SearchId} value={inputValue}></Field>
+                    <Field className={css.input} type='text' name='name' id={SearchId}></Field>
                 </Form>
             </Formik>
         </div>

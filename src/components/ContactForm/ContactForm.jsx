@@ -2,15 +2,22 @@ import { Formik, Form, Field } from 'formik'
 import { useId } from "react";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik"
+import { useDispatch } from "react-redux"
 
 import css from './ContactForm.module.css'
+import { addContact } from '../../redux/contactsSlice';
+
+// import { useSelector } from "react-redux"
+// import { getContacts } from "../../redux/selectors"
 
 
-
-export default function ContactForm({addContact}) {
+export default function ContactForm() {
+    //  const items = useSelector(getContacts)
+    // console.log(items)
     const nameId = useId()
     const telId = useId()
     const itemId = Math.random()
+    const dispatch = useDispatch()
     const ContactSchema = Yup.object().shape({
         name: Yup.string().matches(/^[A-Z][a-zA-Z]*\s[A-Z][a-zA-Z]*$/, 'Name must contain only English letters: "Alex Copeland"').min(2, '1 letter? For real?').max(15, 'Name is too long').required('Enter the name please'),
         number: Yup.string().matches(/^\d{3}-\d{2}-\d{2}$/, 'Incorrect number: "222-22-22"').required('Enter the number please')
@@ -18,7 +25,8 @@ export default function ContactForm({addContact}) {
 
     function submitHandler(values, actions) {
         values.id = itemId
-        addContact(values)
+        // console.log(values.number, values.name)
+        dispatch(addContact({name: values.name, number: values.number}))
         actions.resetForm()
 
     }

@@ -1,13 +1,19 @@
+import { useSelector } from "react-redux"
+
 import css from './ContactList.module.css'
 import Contact from '../Contact/Contact'
+import { getContacts } from "../../redux/selectors"
 
-export default function ContactList({initial, deleteC}) {
+
+export default function ContactList() {
+
+    const items = useSelector(getContacts)
 
     return (
         <ul className={css.list}>
-            {initial.map(elem => {
+            {items.map(elem => {
                 return <li className={css.listItem} key={elem.id}>
-                    <Contact userName={elem.name} userNumber={elem.number} id={elem.id} deleteC={deleteC}></Contact>
+                    <Contact userName={elem.item.name} userNumber={elem.item.number} id={elem.id}></Contact>
                 </li>
                 
             })}
