@@ -8,7 +8,7 @@ const filterSlice = createSlice({
     reducers: {
         filterContacts: {
             reducer(state, action) {
-                return action.payload
+                state.name = action.payload.name
             },
             prepare(name) {
                 return {

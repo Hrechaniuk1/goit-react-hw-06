@@ -10,8 +10,9 @@ export default function ContactList() {
     const items = useSelector(getContacts)
     const value = useSelector(getFilter)
 
-    function getVisibleContacts (contacts) {
-        return contacts.filter(item => item.item.name.toLowerCase().includes(value.toLowerCase()))
+    function getVisibleContacts(contacts) {
+        const info = contacts.filter(item => item.item.name.toLowerCase().includes(value.name.toLowerCase()))
+        return info
     }
 
     const visibleContacts = getVisibleContacts(items)

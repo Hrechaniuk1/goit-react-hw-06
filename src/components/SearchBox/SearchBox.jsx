@@ -11,7 +11,6 @@ export default function SearchBox() {
     const dispatch = useDispatch()
 
     const value = useSelector(getFilter)
-    
 
     function changeHandler(event) {
         dispatch(filterContacts(event.target.value))
@@ -21,7 +20,7 @@ export default function SearchBox() {
         <div>            
                 <form className={css.search}>
                     <label htmlFor={SearchId}>Find contacts by name</label>
-                    <input className={css.input} type='text' name='name' id={SearchId} onChange={changeHandler} value={value}></input>
+                    <input className={css.input} type='text' name='name' id={SearchId} onChange={changeHandler} value={value.name}></input>
                 </form>
 
         </div>
