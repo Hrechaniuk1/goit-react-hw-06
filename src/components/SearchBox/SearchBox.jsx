@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { useDispatch } from "react-redux"
 
 import css from './SearchBox.module.css'
-import { filterContacts } from '../../redux/filtersSlice';
+import { changeFilter } from '../../redux/filtersSlice';
 import { getFilter } from "../../redux/selectors";
 
 export default function SearchBox() {
@@ -13,7 +13,7 @@ export default function SearchBox() {
     const value = useSelector(getFilter)
 
     function changeHandler(event) {
-        dispatch(filterContacts(event.target.value))
+        dispatch(changeFilter(event.target.value))
     }
     
     return (
